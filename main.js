@@ -8,9 +8,9 @@ var dy = -2;
 
 let ballRadius = 10;
 
-let paddleHeight = 10;
-let paddleWidth = 75;
-let paddleX = (canvas.width-paddleWidth)/2;
+var paddleHeight = 10;
+var paddleWidth = 75;
+var paddleX = (canvas.width-paddleWidth)/2;
 
 function drawBall() {
     ctx.beginPath();
@@ -18,17 +18,9 @@ function drawBall() {
     ctx.fillStyle = "#0095DD";
     ctx.fill();
     ctx.closePath();
-  }
-
-  function drawPaddle() {
-    ctx.beginPath();
-    ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-    ctx.fillStyle = "#0095DD";
-    ctx.fill();
-    ctx.closePath();
 }
-  
-  function draw() {
+ 
+function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBall();
     x += dx;
@@ -41,10 +33,19 @@ function drawBall() {
     if (x + dx <ballRadius || x + dx > canvas.width-ballRadius) {
         dx = -dx
     }
-    
-  }
+}
+
 
 setInterval(draw, 10);
+
+
+function drawPaddle() {
+    ctx.beginPath();
+    ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
+    ctx.fillStyle = "#0095DD";
+    ctx.fill();
+    ctx.closePath();
+}
 
 
 
