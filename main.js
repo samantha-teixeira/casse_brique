@@ -8,6 +8,10 @@ var dy = -2;
 
 let ballRadius = 10;
 
+let paddleHeight = 10;
+let paddleWidth = 75;
+let paddleX = (canvas.width-paddleWidth)/2;
+
 function drawBall() {
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI*2);
@@ -15,6 +19,14 @@ function drawBall() {
     ctx.fill();
     ctx.closePath();
   }
+
+  function drawPaddle() {
+    ctx.beginPath();
+    ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
+    ctx.fillStyle = "#0095DD";
+    ctx.fill();
+    ctx.closePath();
+}
   
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -24,18 +36,15 @@ function drawBall() {
 
     if (y + dy <ballRadius || y + dy > canvas.height-ballRadius) {
         dy = -dy
-        ctx.fillStyle = "#02d909";
-        ctx.fill();
     }
     
     if (x + dx <ballRadius || x + dx > canvas.width-ballRadius) {
         dx = -dx
-        ctx.fillStyle = "#e84b02";
-        ctx.fill();
     }
     
   }
 
 setInterval(draw, 10);
+
 
 
